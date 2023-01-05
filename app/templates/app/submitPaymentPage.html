@@ -10,8 +10,9 @@
 
 {% block content %}
 
-<form>
-    {{form}}
-    <buttom> Submit Payment </buttom>
+<form >
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit", name="save payment"> Submit Payment </button>
 </form>
 {% endblock %}

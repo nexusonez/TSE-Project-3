@@ -4,9 +4,9 @@ from django.shortcuts import render, redirect
 from django.http import HttpRequest
 from django.template import RequestContext
 from datetime import datetime
-
+from .models import Payment
 from django.contrib.auth.decorators import login_required
-from .forms import submitPaymentPage
+from .forms import submitPayment
 
 def home(request):
     """Renders the home page."""
@@ -58,11 +58,49 @@ def cfopage(request):
             
         }
     )
+def vendorpage(request):
+    """Renders the Vendor Page"""
+    assert isinstance(request, HttpRequest)
+    return render(
+        request,
+        'app/vendorpage.html',{
+            
+        }
+    )
+def managerpage(request):
+    """Renders the Manager Page"""
+    assert isinstance(request, HttpRequest)
+    return render(
+        request,
+        'app/managerpage.html',{
+            
+        }
+    )
 
-def subPayPage(request):
+def accountantpage(request):
+    """Renders the Company Accoutant Page"""
+    assert isinstance(request, HttpRequest)
+    return render(
+        request,
+        'app/accountantpage.html',{
+            
+        }
+    )
+
+
+def submitPaymentPage(request):
     """Renders the Submit Payment Page"""
     assert isinstance(request, HttpRequest)
-    form = submitPaymentPage()
+    if request.method == "POST":
+        form = submitPayment(request.POST)
+
+        if form.is_valid():
+            n = form.cleaned_data["invoice_ID"]
+            t = Payment(invoice_ID = n)
+            t.save()
+
+    else: 
+        form = submitPayment()
     return render(
         request,
         'app/submitPaymentPage.html',
