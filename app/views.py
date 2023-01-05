@@ -58,6 +58,16 @@ def cfopage(request):
         }
     )
 
+def accoutantpage(request):
+    """Renders the Company Accoutant Page"""
+    assert isinstance(request, HttpRequest)
+    return render(
+        request,
+        'app/accoutantpage.html',{
+            
+        }
+    )
+
 @login_required
 def menu(request):
     # in database this can potentially be used to differentiate different actors
