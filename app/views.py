@@ -6,6 +6,7 @@ from django.template import RequestContext
 from datetime import datetime
 
 from django.contrib.auth.decorators import login_required
+from .forms import submitPaymentPage
 
 def home(request):
     """Renders the home page."""
@@ -56,6 +57,16 @@ def cfopage(request):
         'app/cfopage.html',{
             
         }
+    )
+
+def subPayPage(request):
+    """Renders the Submit Payment Page"""
+    assert isinstance(request, HttpRequest)
+    form = submitPaymentPage()
+    return render(
+        request,
+        'app/submitPaymentPage.html',
+        {"form" :form}
     )
 
 @login_required
