@@ -58,15 +58,36 @@ def cfopage(request):
         }
     )
 
-def accoutantpage(request):
+def accountantpage(request):
     """Renders the Company Accoutant Page"""
     assert isinstance(request, HttpRequest)
     return render(
         request,
-        'app/accoutantpage.html',{
+        'app/accountantpage.html',{
             
         }
     )
+
+def vendorpage(request):
+    """Renders the Vendor Page"""
+    assert isinstance(request, HttpRequest)
+    return render(
+        request,
+        'app/vendorpage.html',{
+            
+        }
+    )
+
+def managerpage(request):
+    """Renders the Manager Page"""
+    assert isinstance(request, HttpRequest)
+    return render(
+        request,
+        'app/managerpage.html',{
+            
+        }
+    )
+    
 
 @login_required
 def menu(request):
