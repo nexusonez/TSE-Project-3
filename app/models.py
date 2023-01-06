@@ -17,11 +17,11 @@ class Item(models.Model):
 
 class Payment(models.Model):
     payment_ID = models.CharField(primary_key=True, max_length=10)
-    class paymentStatus(models.TextChoices):
+    class payment_Status(models.TextChoices):
         Paid = "PAID"
         Not_Paid = "NOT PAID"
     payment_Date = models.DateTimeField(blank = False)
-    class paymentType(models.TextChoices):
+    class payment_Type(models.TextChoices):
         Online = "ONLINE BANKING"
         Cash = "CASH"
         Card = "CARD"
